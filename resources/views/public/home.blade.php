@@ -35,8 +35,8 @@
 
     {{-- Full-width School Building Photo with Glass Stats Overlay --}}
     <div class="relative w-full h-[480px] sm:h-[560px] lg:h-[640px]">
-        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=2000&q=80"
-            alt="Gedung Sekolah"
+        <img src="{{ asset('images/hero.jpg') }}"
+            alt="SDN NGADIRGO 02"
             class="w-full h-full object-cover object-center" />
 
         {{-- Dark gradient at bottom for readability --}}
@@ -96,7 +96,7 @@
                     </p>
                 </div>
                 <div class="mt-4 rounded-xl overflow-hidden h-36">
-                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/tentang_1.png') }}"
                         alt="Integritas" class="w-full h-full object-cover" />
                 </div>
                 <a href="#tentang" class="absolute bottom-4 right-4 w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition">
@@ -109,7 +109,7 @@
             {{-- Card 2: Kreativitas — image top, text bottom --}}
             <div class="bg-gray-50 rounded-2xl p-5 flex flex-col justify-between min-h-[340px] relative group">
                 <div class="rounded-xl overflow-hidden h-36 mb-4">
-                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/tentang_2.png') }}"
                         alt="Kreativitas" class="w-full h-full object-cover" />
                 </div>
                 <div>
@@ -134,7 +134,7 @@
                     </p>
                 </div>
                 <div class="mt-4 rounded-xl overflow-hidden h-36">
-                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/tentang_3.png') }}"
                         alt="Keunggulan" class="w-full h-full object-cover" />
                 </div>
                 <a href="#program" class="absolute bottom-4 right-4 w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-sm hover:shadow-md transition">
@@ -147,7 +147,7 @@
             {{-- Card 4: Karakter — image top, text bottom --}}
             <div class="bg-gray-50 rounded-2xl p-5 flex flex-col justify-between min-h-[340px] relative group">
                 <div class="rounded-xl overflow-hidden h-36 mb-4">
-                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/tentang_4.png') }}"
                         alt="Karakter" class="w-full h-full object-cover" />
                 </div>
                 <div>
@@ -280,13 +280,13 @@
                 {{-- Col 1: 2 tall images --}}
                 <div class="flex flex-col gap-5">
                     <div>
-                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"
+                        <img src="{{ asset('images/fasilitas_1_sains_1782132914342.png') }}"
                             alt="Laboratorium Sains"
                             class="w-full h-52 object-cover rounded-xl" />
                         <p class="mt-2 text-[11px] font-semibold uppercase tracking-widest text-gray-500">Laboratorium Sains</p>
                     </div>
                     <div>
-                        <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=800&q=80"
+                        <img src="{{ asset('images/fasilitas_2_seni_1782132925914.png') }}"
                             alt="Ruang Seni &amp; Musik"
                             class="w-full h-52 object-cover rounded-xl" />
                         <p class="mt-2 text-[11px] font-semibold uppercase tracking-widest text-gray-500">Ruang Seni &amp; Musik</p>
@@ -296,13 +296,13 @@
                 {{-- Col 2: 2 tall images --}}
                 <div class="flex flex-col gap-5">
                     <div>
-                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80"
+                        <img src="{{ asset('images/fasilitas_3_perpustakaan_1782132938319.png') }}"
                             alt="Perpustakaan"
                             class="w-full h-52 object-cover rounded-xl" />
                         <p class="mt-2 text-[11px] font-semibold uppercase tracking-widest text-gray-500">Perpustakaan</p>
                     </div>
                     <div>
-                        <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=800&q=80"
+                        <img src="{{ asset('images/fasilitas_4_komputer_1782132951022.png') }}"
                             alt="Laboratorium Komputer"
                             class="w-full h-52 object-cover rounded-xl" />
                         <p class="mt-2 text-[11px] font-semibold uppercase tracking-widest text-gray-500">Laboratorium Komputer</p>
@@ -312,13 +312,13 @@
                 {{-- Col 3: 2 shorter images (staggered top) --}}
                 <div class="flex flex-col gap-5 lg:pt-10">
                     <div>
-                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80"
+                        <img src="{{ asset('images/fasilitas_5_olahraga_1782132964530.png') }}"
                             alt="Lapangan Olahraga"
                             class="w-full h-44 object-cover rounded-xl" />
                         <p class="mt-2 text-[11px] font-semibold uppercase tracking-widest text-gray-500">Lapangan Olahraga</p>
                     </div>
                     <div>
-                        <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?auto=format&fit=crop&w=800&q=80"
+                        <img src="{{ asset('images/fasilitas_6_taman_1782132977030.png') }}"
                             alt="Taman &amp; Area Hijau"
                             class="w-full h-44 object-cover rounded-xl" />
                         <p class="mt-2 text-[11px] font-semibold uppercase tracking-widest text-gray-500">Taman &amp; Area Hijau</p>
@@ -349,7 +349,7 @@
             {{-- Card 1: Olimpiade Matematika --}}
             <div class="flex flex-col">
                 <div class="rounded-xl overflow-hidden mb-4 aspect-[4/5]">
-                    <img src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/prestasi_1_matematika_1782133276277.png') }}"
                         alt="Juara 1 Olimpiade Matematika Nasional"
                         class="w-full h-full object-cover" />
                 </div>
@@ -362,7 +362,7 @@
             {{-- Card 2: Debat Bahasa Inggris --}}
             <div class="flex flex-col">
                 <div class="rounded-xl overflow-hidden mb-4 aspect-[4/5]">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/prestasi_2_debat_1782133288309.png') }}"
                         alt="Juara 2 Lomba Debat Bahasa Inggris Provinsi"
                         class="w-full h-full object-cover" />
                 </div>
@@ -375,7 +375,7 @@
             {{-- Card 3: Kompetisi Catur --}}
             <div class="flex flex-col">
                 <div class="rounded-xl overflow-hidden mb-4 aspect-[4/5]">
-                    <img src="https://images.unsplash.com/photo-1774128323231-5e538407bda9?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/prestasi_3_catur_1782133299213.png') }}"
                         alt="Juara 1 Kompetisi Catur Nasional"
                         class="w-full h-full object-cover" />
                 </div>
@@ -388,7 +388,7 @@
             {{-- Card 4: Karya Tulis Ilmiah --}}
             <div class="flex flex-col">
                 <div class="rounded-xl overflow-hidden mb-4 aspect-[4/5]">
-                    <img src="https://images.unsplash.com/photo-1761322572550-967ea8c0bfd9?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/prestasi_4_karya_1782133310377.png') }}"
                         alt="Juara 3 Lomba Karya Tulis Ilmiah Nasional"
                         class="w-full h-full object-cover" />
                 </div>
@@ -401,7 +401,7 @@
             {{-- Card 5: Lari 100m --}}
             <div class="flex flex-col">
                 <div class="rounded-xl overflow-hidden mb-4 aspect-[4/5]">
-                    <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/prestasi_5_lari_1782133320838.png') }}"
                         alt="Juara 1 Lari 100m Tingkat Provinsi"
                         class="w-full h-full object-cover" />
                 </div>
@@ -446,73 +446,85 @@
             </div>
         </div>
 
-        {{-- Testimonial Cards --}}
-        <div class="grid md:grid-cols-3 gap-8">
+        {{-- Marquee Container --}}
+        <div class="relative w-full overflow-hidden mt-10">
+            {{-- Gradient Fades for Smooth Scroll Effect --}}
+            <div class="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
-            {{-- Card 1 --}}
-            <div class="flex flex-col">
-                <div class="flex items-center gap-4 mb-5">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg"
-                        alt="Ibu Sari Dewi"
-                        class="w-14 h-14 rounded-lg object-cover shrink-0" />
-                    <div>
-                        <p class="text-[15px] font-bold text-gray-950">Sari Dewi</p>
-                        <p class="text-[12px] text-gray-500">Orang Tua Siswa Kelas 3</p>
+            <div class="flex gap-8 animate-marquee w-max hover:[animation-play-state:paused]">
+                @for($i = 0; $i < 2; $i++)
+                    {{-- Card 1 --}}
+                    <div class="flex flex-col w-[320px] sm:w-[400px] shrink-0 bg-gray-50 border border-gray-100 p-8 rounded-2xl">
+                        <div class="flex items-center gap-4 mb-5">
+                            <img src="{{ asset('images/testimoni_1.png') }}" alt="Ibu Sari Dewi" class="w-14 h-14 rounded-full object-cover shrink-0" />
+                            <div>
+                                <p class="text-[15px] font-bold text-gray-950">Sari Dewi</p>
+                                <p class="text-[12px] text-gray-500">Orang Tua Siswa Kelas 3</p>
+                            </div>
+                        </div>
+                        <p class="text-[14px] text-gray-600 leading-relaxed">
+                            Sekolah ini memberikan fondasi akademik yang kuat dan lingkungan belajar yang disiplin. Bimbingan dari guru-guru sangat berperan dalam membentuk karakter anak saya.
+                        </p>
                     </div>
-                </div>
-                <div class="relative pl-8">
-                    <span class="absolute left-0 top-0 text-5xl font-serif text-gray-200 leading-none select-none">&ldquo;</span>
-                    <p class="text-[14px] text-gray-600 leading-relaxed">
-                        Sekolah ini memberikan fondasi akademik yang kuat dan lingkungan belajar yang disiplin untuk anak saya. Bimbingan dari guru-guru yang penuh dedikasi sangat berperan dalam membentuk karakter dan rasa percaya dirinya.
-                    </p>
-                </div>
-            </div>
 
-            {{-- Card 2 --}}
-            <div class="flex flex-col">
-                <div class="flex items-center gap-4 mb-5">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg"
-                        alt="Ibu Ratna Handayani"
-                        class="w-14 h-14 rounded-lg object-cover shrink-0" />
-                    <div>
-                        <p class="text-[15px] font-bold text-gray-950">Ratna Handayani</p>
-                        <p class="text-[12px] text-gray-500">Orang Tua Siswa Kelas 5</p>
+                    {{-- Card 2 --}}
+                    <div class="flex flex-col w-[320px] sm:w-[400px] shrink-0 bg-gray-50 border border-gray-100 p-8 rounded-2xl">
+                        <div class="flex items-center gap-4 mb-5">
+                            <img src="https://images.unsplash.com/photo-1613447895590-97f008b7fff3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=150" alt="Ibu Ratna Handayani" class="w-14 h-14 rounded-full object-cover shrink-0" />
+                            <div>
+                                <p class="text-[15px] font-bold text-gray-950">Ratna Handayani</p>
+                                <p class="text-[12px] text-gray-500">Orang Tua Siswa Kelas 5</p>
+                            </div>
+                        </div>
+                        <p class="text-[14px] text-gray-600 leading-relaxed">
+                            Pengalaman anak saya bersekolah di sini sangat menyenangkan. Penekanan pada keunggulan akademik dan integritas membuat saya yakin ia mendapat pendidikan terbaik.
+                        </p>
                     </div>
-                </div>
-                <div class="relative pl-8">
-                    <span class="absolute left-0 top-0 text-5xl font-serif text-gray-200 leading-none select-none">&ldquo;</span>
-                    <p class="text-[14px] text-gray-600 leading-relaxed">
-                        Pengalaman anak saya bersekolah di sini sangat menyenangkan dan penuh perkembangan. Penekanan pada keunggulan akademik dan integritas membuat saya yakin ia mendapat pendidikan terbaik untuk masa depannya.
-                    </p>
-                </div>
-            </div>
 
-            {{-- Card 3 --}}
-            <div class="flex flex-col">
-                <div class="flex items-center gap-4 mb-5">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg"
-                        alt="Bapak Budi Santoso"
-                        class="w-14 h-14 rounded-lg object-cover shrink-0" />
-                    <div>
-                        <p class="text-[15px] font-bold text-gray-950">Budi Santoso</p>
-                        <p class="text-[12px] text-gray-500">Orang Tua Siswa Kelas 6</p>
+                    {{-- Card 3 --}}
+                    <div class="flex flex-col w-[320px] sm:w-[400px] shrink-0 bg-gray-50 border border-gray-100 p-8 rounded-2xl">
+                        <div class="flex items-center gap-4 mb-5">
+                            <img src="https://plus.unsplash.com/premium_photo-1690295364571-d2d06159e0a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=150" alt="Bapak Budi Santoso" class="w-14 h-14 rounded-full object-cover shrink-0" />
+                            <div>
+                                <p class="text-[15px] font-bold text-gray-950">Budi Santoso</p>
+                                <p class="text-[12px] text-gray-500">Orang Tua Siswa Kelas 6</p>
+                            </div>
+                        </div>
+                        <p class="text-[14px] text-gray-600 leading-relaxed">
+                            Fasilitas sekolah lengkap dan terawat dengan baik. Program ekstrakurikuler yang beragam membantu anak saya menemukan bakat dan minatnya. Sangat direkomendasikan!
+                        </p>
                     </div>
-                </div>
-                <div class="relative pl-8">
-                    <span class="absolute left-0 top-0 text-5xl font-serif text-gray-200 leading-none select-none">&ldquo;</span>
-                    <p class="text-[14px] text-gray-600 leading-relaxed">
-                        Fasilitas sekolah lengkap dan terawat dengan baik. Program ekstrakurikuler yang beragam membantu anak saya menemukan bakat dan minatnya. Saya sangat merekomendasikan sekolah ini untuk keluarga lainnya.
-                    </p>
-                </div>
+
+                    {{-- Card 4 --}}
+                    <div class="flex flex-col w-[320px] sm:w-[400px] shrink-0 bg-gray-50 border border-gray-100 p-8 rounded-2xl">
+                        <div class="flex items-center gap-4 mb-5">
+                            <img src="https://images.unsplash.com/photo-1586319826907-1ff4aadbaddc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=150" alt="Bapak Hendra" class="w-14 h-14 rounded-full object-cover shrink-0" />
+                            <div>
+                                <p class="text-[15px] font-bold text-gray-950">Hendra Wijaya</p>
+                                <p class="text-[12px] text-gray-500">Orang Tua Siswa Kelas 1</p>
+                            </div>
+                        </div>
+                        <p class="text-[14px] text-gray-600 leading-relaxed">
+                            Awalnya khawatir anak saya akan sulit beradaptasi, tapi lingkungan sekolah yang ramah dan guru yang sabar membuatnya sangat menikmati hari-harinya di sekolah.
+                        </p>
+                    </div>
+
+                    {{-- Card 5 --}}
+                    <div class="flex flex-col w-[320px] sm:w-[400px] shrink-0 bg-gray-50 border border-gray-100 p-8 rounded-2xl">
+                        <div class="flex items-center gap-4 mb-5">
+                            <img src="https://images.unsplash.com/photo-1528425646626-fcc5dd57daf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=150" alt="Ibu Siti Aminah" class="w-14 h-14 rounded-full object-cover shrink-0" />
+                            <div>
+                                <p class="text-[15px] font-bold text-gray-950">Siti Aminah</p>
+                                <p class="text-[12px] text-gray-500">Orang Tua Siswa Kelas 4</p>
+                            </div>
+                        </div>
+                        <p class="text-[14px] text-gray-600 leading-relaxed">
+                            Sekolah ini menanamkan nilai-nilai keagamaan dan budi pekerti yang sangat baik. Anak saya tidak hanya cerdas secara akademik tapi juga sopan santun.
+                        </p>
+                    </div>
+                @endfor
             </div>
-
-        </div>
-
-        {{-- Carousel Dots --}}
-        <div class="flex items-center justify-center gap-2 mt-12">
-            <span class="w-2.5 h-2.5 rounded-full bg-gray-950"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
         </div>
 
     </div>
@@ -792,7 +804,7 @@
                 <div class="bg-gray-50 rounded-2xl overflow-hidden">
                     <div class="h-48 bg-gray-200 relative">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d106.8!3d-6.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTInMDAuMCJTIDEwNsKwNDgnMDAuMCJF!5e0!3m2!1sid!2sid!4v1000000000000!5m2!1sid!2sid"
+                            src="https://maps.google.com/maps?q=SDN%20Ngadirgo%2002,%20Jl.%20Raya%20Ngadirgo%20No.02,%20Mijen,%20Semarang&t=&z=15&ie=UTF8&iwloc=&output=embed"
                             class="w-full h-full border-0" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>

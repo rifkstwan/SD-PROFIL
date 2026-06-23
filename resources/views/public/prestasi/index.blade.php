@@ -21,9 +21,16 @@
     </section>
 
     <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        @if($prestasiList->isEmpty())
+            <div class="text-center py-20 bg-white rounded-[2rem] shadow-sm">
+                <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Belum Ada Prestasi</h3>
+                <p class="text-gray-500">Data prestasi siswa belum ditambahkan.</p>
+            </div>
+        @else
         {{-- Featured Achievement Card --}}
         <div class="relative w-full h-[450px] md:h-[500px] lg:h-[600px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500 mb-20 group" id="featured-container">
-            <img src="{{ $prestasiList[0]['image'] }}" id="featured-img"
+            <img src="{{ Storage::url($prestasiList[0]->image) }}" id="featured-img"
                  alt="Featured Prestasi" 
                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             
@@ -35,26 +42,27 @@
                 <div class="max-w-4xl relative z-10">
                     <div class="flex flex-wrap gap-3 items-center mb-5 md:mb-6 transition-opacity duration-500" id="fade-wrapper-1">
                         <span class="px-4 py-1.5 bg-[#f5f0eb] text-gray-950 text-[13px] font-bold rounded-full tracking-wide" id="dynamic-category">
-                            {{ $prestasiList[0]['category'] }}
+                            {{ $prestasiList[0]->category }}
                         </span>
                     </div>
                     
                     <h3 class="text-4xl lg:text-5xl xl:text-6xl font-semibold text-white leading-tight transition-opacity duration-500 mb-2">
-                        <span id="dynamic-title-1">{{ $prestasiList[0]['title_line1'] }}</span><br>
-                        <span class="font-black" id="dynamic-title-2">{{ $prestasiList[0]['title_line2'] }}</span>
+                        <span id="dynamic-title-1">{{ $prestasiList[0]->title_line1 }}</span><br>
+                        <span class="font-black" id="dynamic-title-2">{{ $prestasiList[0]->title_line2 }}</span>
                     </h3>
 
                     <p class="text-[14px] lg:text-[15px] font-medium text-[#fbbf24] mb-5 md:mb-6 transition-opacity duration-500" id="dynamic-subtitle">
-                        Diraih oleh: <strong>{{ $prestasiList[0]['student_name'] }}</strong> ({{ $prestasiList[0]['date'] }})
+                        Diraih oleh: <strong>{{ $prestasiList[0]->student_name }}</strong> ({{ $prestasiList[0]->date }})
                     </p>
                     
                     <p class="text-[14px] lg:text-[16px] text-gray-200 leading-relaxed transition-opacity duration-500 max-w-3xl" id="dynamic-desc">
-                        {{ $prestasiList[0]['description'] }}
+                        {{ $prestasiList[0]->description }}
                     </p>
                 </div>
             </div>
         </div>
 
+        @if($prestasiList->count() > 1)
         {{-- Section: Prestasi Lainnya (Grid) --}}
         <div class="text-center max-w-3xl mx-auto mb-14 mt-12 lg:mt-20">
             <h2 class="text-3xl lg:text-4xl font-bold text-gray-950 mb-5">Prestasi Kami Lainnya</h2>
@@ -68,13 +76,22 @@
             @foreach($prestasiList as $index => $prestasi)
             {{-- Skip the first item (it's featured) --}}
             <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer group flex flex-col {{ $index === 0 ? 'hidden' : '' }}" 
-                 data-prestasi="{{ json_encode($prestasi) }}"
+                 data-prestasi="{{ json_encode([
+                     'title_line1' => $prestasi->title_line1,
+                     'title_line2' => $prestasi->title_line2,
+                     'title' => $prestasi->title,
+                     'description' => $prestasi->description,
+                     'category' => $prestasi->category,
+                     'student_name' => $prestasi->student_name,
+                     'date' => $prestasi->date,
+                     'image_url' => Storage::url($prestasi->image)
+                 ]) }}"
                  data-index="{{ $index }}"
                  onclick="swapPrestasi(this)">
                 
                 <div class="relative overflow-hidden aspect-[4/3] sm:aspect-square lg:aspect-[4/5]">
-                    <img src="{{ $prestasi['image'] }}" 
-                         alt="{{ $prestasi['title'] }}" 
+                    <img src="{{ Storage::url($prestasi->image) }}" 
+                         alt="{{ $prestasi->title }}" 
                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     
                     {{-- Overlay Icon --}}
@@ -86,8 +103,8 @@
                 </div>
                 
                 <div class="p-6">
-                    <h3 class="text-[17px] font-bold text-gray-950 mb-1.5 line-clamp-2 group-hover:text-gray-600 transition-colors">{{ $prestasi['title'] }}</h3>
-                    <p class="text-[13px] text-gray-500 font-medium">{{ $prestasi['student_name'] }} &mdash; {{ $prestasi['date'] }}</p>
+                    <h3 class="text-[17px] font-bold text-gray-950 mb-1.5 line-clamp-2 group-hover:text-gray-600 transition-colors">{{ $prestasi->title }}</h3>
+                    <p class="text-[13px] text-gray-500 font-medium">{{ $prestasi->student_name }} &mdash; {{ $prestasi->date }}</p>
                 </div>
             </div>
             @endforeach
@@ -99,7 +116,9 @@
                 Lihat Semua Prestasi
             </button>
         </div>
-
+        @endif
+        
+        @endif
     </div>
 </div>
 
@@ -130,7 +149,7 @@
         // Wait for the CSS transition (500ms) to complete before swapping data
         setTimeout(() => {
             // Update content after fade out
-            featuredImg.src = newData.image;
+            featuredImg.src = newData.image_url;
             dynamicTitle1.textContent = newData.title_line1;
             dynamicTitle2.textContent = newData.title_line2;
             dynamicSubtitle.innerHTML = `Diraih oleh: <strong>${newData.student_name}</strong> (${newData.date})`;

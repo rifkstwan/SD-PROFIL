@@ -4,7 +4,7 @@
 
     <div class="mb-10">
         <h2 class="text-[32px] sm:text-4xl font-black text-gray-950 tracking-tight mb-2">Selamat Datang,</h2>
-        <p class="text-[15px] sm:text-[16px] text-gray-500 leading-relaxed">Silakan login untuk mengakses portal manajemen sekolah SD Harapan Bangsa.</p>
+        <p class="text-[15px] sm:text-[16px] text-gray-500 leading-relaxed">Silakan login untuk mengakses portal manajemen sekolah SDN NGADIRGO 02.</p>
     </div>
 
     <form method="POST" action="{{ route('login') }}" class="space-y-6">

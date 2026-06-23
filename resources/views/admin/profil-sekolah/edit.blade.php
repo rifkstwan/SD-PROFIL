@@ -19,7 +19,7 @@
                 {{-- Nama Sekolah --}}
                 <div>
                     <label class="block text-sm font-bold text-gray-900 mb-2">Nama Sekolah <span class="text-red-500">*</span></label>
-                    <input type="text" name="name" value="{{ old('name', $profile->name) }}" required placeholder="Contoh: SD Harapan Bangsa"
+                    <input type="text" name="name" value="{{ old('name', $profile->name) }}" required placeholder="Contoh: SDN NGADIRGO 02"
                         class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#ff6b35]/50 focus:border-[#ff6b35] transition-all
                            @error('name') border-red-500 bg-red-50 focus:ring-red-500/50 focus:border-red-500 @enderror">
                     @error('name')<p class="text-red-500 text-xs font-medium mt-1.5">{{ $message }}</p>@enderror

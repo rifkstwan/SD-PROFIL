@@ -22,7 +22,7 @@
             {{-- Card 1 --}}
             <div class="bg-white rounded-2xl overflow-hidden group">
                 <div class="aspect-[4/5] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/guru_sari.jpg') }}"
                         alt="Ibu Sari Dewi, S.Pd."
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
@@ -41,7 +41,7 @@
             {{-- Card 2 --}}
             <div class="bg-white rounded-2xl overflow-hidden group">
                 <div class="aspect-[4/5] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/guru_ahmad.jpg') }}"
                         alt="Bapak Ahmad Hidayat, M.Pd."
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
@@ -60,7 +60,7 @@
             {{-- Card 3 --}}
             <div class="bg-white rounded-2xl overflow-hidden group">
                 <div class="aspect-[4/5] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/guru_ratna.jpg') }}"
                         alt="Ibu Ratna Kusuma, S.Pd."
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
@@ -79,7 +79,7 @@
             {{-- Card 4 --}}
             <div class="bg-white rounded-2xl overflow-hidden group">
                 <div class="aspect-[4/5] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/guru_dedi.jpg') }}"
                         alt="Bapak Dedi Setiawan, S.Or."
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
@@ -114,7 +114,7 @@
 
                 {{-- Avatar & Attribution --}}
                 <div class="mt-8 flex flex-col items-center">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80"
+                    <img src="{{ asset('images/guru_sari.jpg') }}"
                         alt="Ibu Sari Dewi, S.Pd."
                         class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md" />
                     <h4 class="mt-3 text-[15px] font-bold text-gray-950">Ibu Sari Dewi, S.Pd.</h4>

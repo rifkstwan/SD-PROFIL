@@ -30,11 +30,11 @@
                 <div class="absolute inset-0 p-12 xl:p-20 flex flex-col justify-center">
                     <div class="mb-8">
                         {{-- Large White Logo --}}
-                        <svg class="w-20 h-20 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-24 h-24 object-contain" />
                     </div>
                     
                     <h1 class="text-4xl xl:text-5xl 2xl:text-[54px] font-black text-white leading-[1.15] mb-6 tracking-tight">
-                        SD Harapan Bangsa<br>
+                        SDN NGADIRGO 02<br>
                         <span class="font-medium text-white/90">School Management</span>
                     </h1>
                     
@@ -49,10 +49,8 @@
                 <div class="w-full max-w-md">
                     {{-- Mobile Logo (Hidden on Desktop) --}}
                     <div class="lg:hidden flex items-center gap-3 mb-10">
-                        <div class="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center shadow-md">
-                            <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
-                        </div>
-                        <span class="text-2xl font-bold text-gray-900 tracking-tight">SD Harapan Bangsa</span>
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-12 h-12 object-contain" />
+                        <span class="text-2xl font-bold text-gray-900 tracking-tight">SDN NGADIRGO 02</span>
                     </div>
 
                     {{ $slot }}

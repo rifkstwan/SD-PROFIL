@@ -13,6 +13,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::resource('berita', NewsController::class);
     Route::resource('galeri', GalleryController::class);
+    Route::resource('prestasi', \App\Http\Controllers\Admin\AchievementController::class);
     Route::delete('galeri-image/{image}', [GalleryController::class, 'destroyImage'])->name('galeri-image.destroy');
     Route::get('profil-sekolah', [SchoolProfileController::class, 'edit'])->name('profil-sekolah.edit');
     Route::put('profil-sekolah', [SchoolProfileController::class, 'update'])->name('profil-sekolah.update');

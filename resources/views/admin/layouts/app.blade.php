@@ -23,9 +23,7 @@
                class="w-64 bg-white rounded-[1.5rem] flex flex-col flex-shrink-0 shadow-sm border border-gray-100 overflow-hidden fixed md:relative z-50 h-[calc(100vh-1.5rem)] sm:h-[calc(100vh-2.5rem)] md:h-auto transition-transform duration-300 ease-in-out left-3 sm:left-5 top-3 sm:top-5 md:left-auto md:top-auto md:translate-x-0">
             <div class="px-6 py-8 flex items-center justify-between gap-3 shrink-0">
                 {{-- Logo Orange Box --}}
-                <div class="w-8 h-8 rounded-lg bg-[#ff6b35] flex items-center justify-center shadow-md">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
-                </div>
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-10 h-10 object-contain drop-shadow-md" />
                 <span class="text-xl font-bold tracking-tight text-gray-900">{{ config('app.name') }}</span>
             </div>
 
@@ -53,6 +51,12 @@
                             {{ request()->routeIs('admin.galeri.*') ? 'bg-[#ff6b35] text-white shadow-md shadow-orange-500/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50' }}">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                             Galeri
+                        </a>
+                        <a href="{{ route('admin.prestasi.index') }}"
+                            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14px] font-medium transition-colors
+                            {{ request()->routeIs('admin.prestasi.*') ? 'bg-[#ff6b35] text-white shadow-md shadow-orange-500/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50' }}">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Prestasi
                         </a>
                         <a href="{{ route('admin.inquiries.index') }}"
                             class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14px] font-medium transition-colors

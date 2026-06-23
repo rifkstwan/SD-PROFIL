@@ -20,9 +20,7 @@
             <div class="flex items-center justify-between h-[72px]">
                 {{-- Logo --}}
                 <a href="{{ route('home') }}" class="flex items-center gap-2.5 shrink-0">
-                    <svg class="w-7 h-7 text-gray-900" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6 2 10.5c0 2.1 1 4 2.6 5.4C3.6 17.2 3 18.5 3 20c0 1.1.9 2 2 2 1.4 0 2.5-.6 3.3-1.5.8.5 1.7.8 2.7 1 .3.1.7.1 1 .1s.7 0 1-.1c1-.2 1.9-.5 2.7-1 .8.9 1.9 1.5 3.3 1.5 1.1 0 2-.9 2-2 0-1.5-.6-2.8-1.6-4.1C21 14.5 22 12.6 22 10.5 22 6 17.52 2 12 2zm-2 14.5c-1.4 0-2.5-.5-3.4-1.3.5-.3 1-.6 1.6-.8.5.4 1.1.6 1.8.6v1.5zm4 0v-1.5c.7 0 1.3-.2 1.8-.6.6.2 1.1.5 1.6.8-.9.8-2 1.3-3.4 1.3zM12 14c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z" />
-                    </svg>
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-10 h-10 object-contain" />
                     <div class="leading-tight">
                         <span class="block text-[15px] font-bold text-gray-900 tracking-tight">
                             {{ $profile->name ?? config('app.name') }}
@@ -110,9 +108,7 @@
                 {{-- School Info --}}
                 <div class="lg:col-span-1">
                     <div class="flex items-center gap-3 mb-5">
-                        <svg class="w-7 h-7 text-gray-900 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C6.48 2 2 6 2 10.5c0 2.1 1 4 2.6 5.4C3.6 17.2 3 18.5 3 20c0 1.1.9 2 2 2 1.4 0 2.5-.6 3.3-1.5.8.5 1.7.8 2.7 1 .3.1.7.1 1 .1s.7 0 1-.1c1-.2 1.9-.5 2.7-1 .8.9 1.9 1.5 3.3 1.5 1.1 0 2-.9 2-2 0-1.5-.6-2.8-1.6-4.1C21 14.5 22 12.6 22 10.5 22 6 17.52 2 12 2zm-2 14.5c-1.4 0-2.5-.5-3.4-1.3.5-.3 1-.6 1.6-.8.5.4 1.1.6 1.8.6v1.5zm4 0v-1.5c.7 0 1.3-.2 1.8-.6.6.2 1.1.5 1.6.8-.9.8-2 1.3-3.4 1.3zM12 14c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z" />
-                        </svg>
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-12 h-12 object-contain shrink-0" />
                         <span class="text-lg font-bold text-gray-950">{{ $profile->name ?? config('app.name') }}</span>
                     </div>
                     <p class="text-sm text-gray-600 leading-relaxed mb-6">
