@@ -22,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Share school profile globally with all views
-        View::share('profile', SchoolProfile::first());
+        try {
+            View::share('profile', SchoolProfile::first());
+        } catch (\Exception $e) {
+            // Table might not exist yet during migration
+        }
     }
 }
