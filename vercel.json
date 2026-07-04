@@ -37,6 +37,7 @@
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "false",
+    "APP_NAME": "SDN NGADIRGO 02",
     "APP_KEY": "base64:SysM5ma9nGuuYkrx/guCOdMFYZGaXiXBP9tTqjRdkOg=",
     "DB_CONNECTION": "pgsql",
     "DB_HOST": "aws-0-ap-northeast-1.pooler.supabase.com",
