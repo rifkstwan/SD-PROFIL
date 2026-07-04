@@ -13,7 +13,7 @@
         <div class="grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
             {{-- Left: Big Headline --}}
             <div>
-                <h1 class="text-4xl sm:text-5xl lg:text-[52px] font-black text-gray-950 leading-[1.1] tracking-tight">
+                <h1 class="text-3xl sm:text-4xl sm:text-5xl lg:text-[52px] font-black text-gray-950 leading-[1.1] tracking-tight">
                     Membentuk generasi yang aktif tumbuh dan berprestasi
                 </h1>
             </div>
@@ -44,7 +44,7 @@
 
         {{-- Separate Glass Stat Cards --}}
         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-5xl">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <div class="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl px-5 py-4 shadow-xl">
                     <div class="text-3xl lg:text-4xl font-black text-white tracking-tight">25+</div>
                     <div class="text-xs text-white/70 mt-1.5 leading-snug">Tahun Berpengalaman<br>dalam Pendidikan</div>
@@ -275,7 +275,7 @@
             </div>
 
             {{-- Right: 3-column editorial photo grid --}}
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
                 {{-- Col 1: 2 tall images --}}
                 <div class="flex flex-col gap-5">
@@ -344,7 +344,7 @@
         </div>
 
         {{-- Achievement Cards — 5 columns --}}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
 
             {{-- Card 1: Olimpiade Matematika --}}
             <div class="flex flex-col">
@@ -702,7 +702,7 @@
                             class="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-950 focus:border-transparent transition"
                             placeholder="Nama lengkap calon siswa" />
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 xs:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1.5">Kelas yang Dituju</label>
                             <select name="grade"

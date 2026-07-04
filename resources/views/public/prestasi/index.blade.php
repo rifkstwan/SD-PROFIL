@@ -7,9 +7,9 @@
     <section class="pt-32 pb-8 lg:pb-12">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-12">
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
-                <h1 class="text-4xl lg:text-6xl font-semibold text-gray-950 leading-tight">
+                <h1 class="text-3xl sm:text-4xl lg:text-6xl font-semibold text-gray-950 leading-tight">
                     Prestasi Membanggakan<br>
-                    <span class="font-black tracking-tight text-5xl lg:text-7xl">siswa kami</span>
+                    <span class="font-black tracking-tight text-4xl sm:text-5xl lg:text-7xl">siswa kami</span>
                 </h1>
                 <div class="flex flex-col justify-center lg:pl-10">
                     <p class="text-[16px] text-gray-500 leading-relaxed">
@@ -29,7 +29,7 @@
             </div>
         @else
         {{-- Featured Achievement Card --}}
-        <div class="relative w-full h-[450px] md:h-[500px] lg:h-[600px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500 mb-20 group" id="featured-container">
+        <div class="relative w-full h-[320px] sm:h-[450px] md:h-[500px] lg:h-[600px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500 mb-16 lg:mb-20 group" id="featured-container">
             <img src="{{ Storage::url($prestasiList[0]->image) }}" id="featured-img"
                  alt="Featured Prestasi" 
                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
@@ -46,7 +46,7 @@
                         </span>
                     </div>
                     
-                    <h3 class="text-4xl lg:text-5xl xl:text-6xl font-semibold text-white leading-tight transition-opacity duration-500 mb-2">
+                    <h3 class="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-white leading-tight transition-opacity duration-500 mb-2">
                         <span id="dynamic-title-1">{{ $prestasiList[0]->title_line1 }}</span><br>
                         <span class="font-black" id="dynamic-title-2">{{ $prestasiList[0]->title_line2 }}</span>
                     </h3>
@@ -72,7 +72,7 @@
         </div>
 
         {{-- Grid Items --}}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" id="prestasi-grid">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-8" id="prestasi-grid">
             @foreach($prestasiList as $index => $prestasi)
             {{-- Skip the first item (it's featured) --}}
             <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer group flex flex-col {{ $index === 0 ? 'hidden' : '' }}" 

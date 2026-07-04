@@ -6,9 +6,9 @@
 <section class="pt-32 pb-8 lg:pb-12 bg-[#f5f0eb]">
     <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-12">
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
-            <h1 class="text-4xl lg:text-6xl font-semibold text-gray-950 leading-tight">
+            <h1 class="text-3xl sm:text-4xl lg:text-6xl font-semibold text-gray-950 leading-tight">
                 Jelajahi momen<br>
-                <span class="font-black tracking-tight text-5xl lg:text-7xl">sekolah kami</span>
+                <span class="font-black tracking-tight text-4xl sm:text-5xl lg:text-7xl">sekolah kami</span>
             </h1>
             <div class="flex flex-col justify-center lg:pl-10">
                 <p class="text-[16px] text-gray-500 leading-relaxed">
