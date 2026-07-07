@@ -17,4 +17,24 @@ Route::post('/inquiry', [\App\Http\Controllers\Public\InquiryController::class, 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
 
+// Temporary routes to migrate and seed the database on Vercel
+Route::get('/migrate', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        return 'Migration output:<br><pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
+    } catch (\Exception $e) {
+        return 'Migration failed: ' . $e->getMessage();
+    }
+});
+
+Route::get('/seed', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+        return 'Seeding output:<br><pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
+    } catch (\Exception $e) {
+        return 'Seeding failed: ' . $e->getMessage();
+    }
+});
+
+
 
