@@ -10,6 +10,7 @@ use App\Models\SiteSetting;
 use App\Models\News;
 use App\Models\Gallery;
 use App\Models\GalleryImage;
+use App\Models\Achievement;
 
 class DatabaseSeeder extends Seeder
 {
@@ -175,7 +176,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 6,
                 'title' => 'Taman Sekolah',
-                'description' => 'Lingkungan sekolah yang asri dan hijau',
+                'description' => 'Lingkungan sekolah yang asri and hijau',
                 'images' => [
                     ['image_path' => 'gallery/taman_1.png', 'caption' => 'Taman Sekolah'],
                     ['image_path' => 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=80', 'caption' => 'Taman Sekolah'],
@@ -205,6 +206,81 @@ class DatabaseSeeder extends Seeder
                     ]
                 );
             }
+        }
+
+        // 6. Seed Achievements (5 original local achievements)
+        $achievements = [
+            [
+                'id' => 1,
+                'title_line1' => 'Juara 1',
+                'title_line2' => 'Olimpiade Matematika',
+                'title' => 'Juara 1 Olimpiade Matematika Nasional',
+                'description' => 'Prestasi membanggakan di bidang akademik. Siswa kami berhasil meraih medali emas pada ajang Olimpiade Matematika tingkat Nasional.',
+                'image' => 'achievements/prestasi_1_matematika_1782133276277.png',
+                'category' => 'Akademik',
+                'date' => '2024',
+                'student_name' => 'Tirta Pratama',
+            ],
+            [
+                'id' => 2,
+                'title_line1' => 'Juara 2',
+                'title_line2' => 'Debat Bahasa Inggris',
+                'title' => 'Juara 2 Lomba Debat Bahasa Inggris Provinsi',
+                'description' => 'Tim perwakilan sekolah menunjukkan kemampuan argumentasi dan bahasa Inggris yang luar biasa di ajang lomba debat tingkat provinsi.',
+                'image' => 'achievements/prestasi_2_debat_1782133288309.png',
+                'category' => 'Bahasa',
+                'date' => '2025',
+                'student_name' => 'Karen Alexia',
+            ],
+            [
+                'id' => 3,
+                'title_line1' => 'Juara 1',
+                'title_line2' => 'Kompetisi Catur',
+                'title' => 'Juara 1 Kompetisi Catur Nasional',
+                'description' => 'Berpikir strategis dan tenang di bawah tekanan, siswa kami berhasil mengalahkan lawan-lawan tangguh dari seluruh negeri pada kompetisi catur nasional.',
+                'image' => 'achievements/prestasi_3_catur_1782133299213.png',
+                'category' => 'Olahraga & Strategi',
+                'date' => '2024',
+                'student_name' => 'Tirta Pratama',
+            ],
+            [
+                'id' => 4,
+                'title_line1' => 'Juara 3',
+                'title_line2' => 'Karya Tulis Ilmiah',
+                'title' => 'Juara 3 Lomba Karya Tulis Ilmiah Nasional',
+                'description' => 'Penelitian dan inovasi sains yang cemerlang mengantarkan siswa kami menjadi salah satu yang terbaik pada lomba karya tulis ilmiah tingkat nasional.',
+                'image' => 'achievements/prestasi_4_karya_1782133310377.png',
+                'category' => 'Sains & Penelitian',
+                'date' => '2022',
+                'student_name' => 'Dewi Wulan',
+            ],
+            [
+                'id' => 5,
+                'title_line1' => 'Juara 1',
+                'title_line2' => 'Lari 100m Provinsi',
+                'title' => 'Juara 1 Lari 100m Tingkat Provinsi',
+                'description' => 'Ketangkasan dan kecepatan luar biasa menjadikan siswa kami sebagai yang tercepat dalam ajang kejuaraan lari 100m tingkat provinsi.',
+                'image' => 'achievements/prestasi_5_lari_1782133320838.png',
+                'category' => 'Olahraga Fisik',
+                'date' => '2023',
+                'student_name' => 'Rizky Maulana',
+            ]
+        ];
+
+        foreach ($achievements as $a) {
+            Achievement::updateOrCreate(
+                ['id' => $a['id']],
+                [
+                    'title_line1' => $a['title_line1'],
+                    'title_line2' => $a['title_line2'],
+                    'title'        => $a['title'],
+                    'description' => $a['description'],
+                    'image'       => $a['image'],
+                    'category'    => $a['category'],
+                    'date'         => $a['date'],
+                    'student_name' => $a['student_name'],
+                ]
+            );
         }
     }
 }
