@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -23,10 +24,11 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'     => 'required|string|max:255',
-            'content'   => 'required',
-            'status'    => 'required|in:draft,published',
-            'thumbnail' => 'nullable|image|max:2048',
+            'title'         => 'required|string|max:255',
+            'content'       => 'required',
+            'status'        => 'required|in:draft,published',
+            'thumbnail'     => 'nullable|image|max:2048',
+            'thumbnail_url' => 'nullable|url|max:2048',
         ]);
 
         $data = [
@@ -40,6 +42,8 @@ class NewsController extends Controller
 
         if ($request->hasFile('thumbnail')) {
             $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
+        } elseif ($request->filled('thumbnail_url')) {
+            $data['thumbnail'] = $request->thumbnail_url;
         }
 
         News::create($data);
@@ -55,10 +59,11 @@ class NewsController extends Controller
     public function update(Request $request, News $beritum)
     {
         $request->validate([
-            'title'     => 'required|string|max:255',
-            'content'   => 'required',
-            'status'    => 'required|in:draft,published',
-            'thumbnail' => 'nullable|image|max:2048',
+            'title'         => 'required|string|max:255',
+            'content'       => 'required',
+            'status'        => 'required|in:draft,published',
+            'thumbnail'     => 'nullable|image|max:2048',
+            'thumbnail_url' => 'nullable|url|max:2048',
         ]);
 
         $data = [
@@ -69,10 +74,15 @@ class NewsController extends Controller
         ];
 
         if ($request->hasFile('thumbnail')) {
-            if ($beritum->thumbnail) {
+            if ($beritum->thumbnail && !Str::startsWith($beritum->thumbnail, 'http')) {
                 Storage::disk('public')->delete($beritum->thumbnail);
             }
             $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
+        } elseif ($request->filled('thumbnail_url')) {
+            if ($beritum->thumbnail && !Str::startsWith($beritum->thumbnail, 'http')) {
+                Storage::disk('public')->delete($beritum->thumbnail);
+            }
+            $data['thumbnail'] = $request->thumbnail_url;
         }
 
         $beritum->update($data);
@@ -82,7 +92,7 @@ class NewsController extends Controller
 
     public function destroy(News $beritum)
     {
-        if ($beritum->thumbnail) {
+        if ($beritum->thumbnail && !Str::startsWith($beritum->thumbnail, 'http')) {
             Storage::disk('public')->delete($beritum->thumbnail);
         }
         $beritum->delete();

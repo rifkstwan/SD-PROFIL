@@ -36,15 +36,26 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {{-- Thumbnail --}}
-                <div>
-                    <label class="block text-sm font-bold text-gray-900 mb-2">Gambar Utama (Thumbnail) <span class="text-gray-400 font-normal ml-1">(Opsional)</span></label>
-                    <div class="relative">
-                        <input type="file" name="thumbnail" accept="image/*"
-                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#ff6b35]/10 file:text-[#ff6b35] hover:file:bg-[#ff6b35]/20 focus:outline-none transition-all text-gray-600 cursor-pointer
-                            @error('thumbnail') border-red-500 bg-red-50 @enderror">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-2">Gambar Utama (Upload File) <span class="text-gray-400 font-normal ml-1">(Opsional)</span></label>
+                        <div class="relative">
+                            <input type="file" name="thumbnail" accept="image/*"
+                                class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#ff6b35]/10 file:text-[#ff6b35] hover:file:bg-[#ff6b35]/20 focus:outline-none transition-all text-gray-600 cursor-pointer
+                                @error('thumbnail') border-red-500 bg-red-50 @enderror">
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">Format: JPG, PNG, WEBP. Maksimal ukuran 2MB.</p>
+                        @error('thumbnail')<p class="text-red-500 text-xs font-medium mt-1.5">{{ $message }}</p>@enderror
                     </div>
-                    <p class="text-xs text-gray-500 mt-2">Format: JPG, PNG, WEBP. Maksimal ukuran 2MB.</p>
-                    @error('thumbnail')<p class="text-red-500 text-xs font-medium mt-1.5">{{ $message }}</p>@enderror
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-2">Atau Gunakan URL Gambar (Rekomendasi untuk Vercel)</label>
+                        <input type="url" name="thumbnail_url" value="{{ old('thumbnail_url') }}" placeholder="https://images.unsplash.com/..."
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#ff6b35]/50 focus:border-[#ff6b35] transition-all
+                               @error('thumbnail_url') border-red-500 bg-red-50 @enderror">
+                        <p class="text-xs text-gray-500 mt-2">Gunakan URL gambar dari internet (misal dari Unsplash, Imgur, dll) agar gambar tetap muncul saat di-deploy ke Vercel.</p>
+                        @error('thumbnail_url')<p class="text-red-500 text-xs font-medium mt-1.5">{{ $message }}</p>@enderror
+                    </div>
                 </div>
 
                 {{-- Status --}}

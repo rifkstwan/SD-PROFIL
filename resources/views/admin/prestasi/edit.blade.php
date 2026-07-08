@@ -77,20 +77,31 @@
                 </div>
             </div>
 
-            <div>
-                <label class="block text-sm font-bold text-gray-900 mb-2">Gambar Prestasi <span class="text-gray-400 font-normal ml-1">(Opsional)</span></label>
-                @if($prestasi->image)
-                    <div class="mb-4">
-                        <img src="{{ Storage::url($prestasi->image) }}" alt="Current Image" class="h-32 w-auto object-cover rounded-xl border border-gray-200">
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-gray-900 mb-2">Gambar Prestasi (Upload File) <span class="text-gray-400 font-normal ml-1">(Opsional)</span></label>
+                    @if($prestasi->image)
+                        <div class="mb-4">
+                            <img src="{{ Str::startsWith($prestasi->image, 'http') ? $prestasi->image : Storage::url($prestasi->image) }}" alt="Current Image" class="h-32 w-auto object-cover rounded-xl border border-gray-200">
+                        </div>
+                    @endif
+                    <div class="relative">
+                        <input type="file" name="image" accept="image/*"
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#ff6b35]/10 file:text-[#ff6b35] hover:file:bg-[#ff6b35]/20 focus:outline-none transition-all text-gray-600 cursor-pointer
+                            @error('image') border-red-500 bg-red-50 @enderror">
                     </div>
-                @endif
-                <div class="relative">
-                    <input type="file" name="image" accept="image/*"
-                        class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#ff6b35]/10 file:text-[#ff6b35] hover:file:bg-[#ff6b35]/20 focus:outline-none transition-all text-gray-600 cursor-pointer
-                        @error('image') border-red-500 bg-red-50 @enderror">
+                    <p class="text-xs text-gray-500 mt-2">Biarkan kosong jika tidak ingin mengubah gambar. Format: JPG, PNG, WEBP. Maks 2MB.</p>
+                    @error('image')<p class="text-red-500 text-xs font-medium mt-1.5">{{ $message }}</p>@enderror
                 </div>
-                <p class="text-xs text-gray-500 mt-2">Biarkan kosong jika tidak ingin mengubah gambar. Format: JPG, PNG, WEBP. Maks 2MB.</p>
-                @error('image')<p class="text-red-500 text-xs font-medium mt-1.5">{{ $message }}</p>@enderror
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-900 mb-2">Atau Gunakan URL Gambar (Rekomendasi untuk Vercel)</label>
+                    <input type="url" name="image_url" value="{{ old('image_url', Str::startsWith($prestasi->image, 'http') ? $prestasi->image : '') }}" placeholder="https://images.unsplash.com/..."
+                        class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#ff6b35]/50 focus:border-[#ff6b35] transition-all
+                           @error('image_url') border-red-500 bg-red-50 @enderror">
+                    <p class="text-xs text-gray-500 mt-2">Gunakan URL gambar dari internet (misal dari Unsplash, Imgur, dll) agar gambar tetap muncul saat di-deploy ke Vercel.</p>
+                    @error('image_url')<p class="text-red-500 text-xs font-medium mt-1.5">{{ $message }}</p>@enderror
+                </div>
             </div>
         </div>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Achievement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class AchievementController extends Controller
 {
@@ -30,13 +31,16 @@ class AchievementController extends Controller
             'category'    => 'required|string|max:255',
             'date'        => 'required|string|max:255',
             'student_name'=> 'required|string|max:255',
-            'image'       => 'required|image|max:2048',
+            'image'       => 'required_without:image_url|nullable|image|max:2048',
+            'image_url'   => 'required_without:image|nullable|url|max:2048',
         ]);
 
-        $data = $request->except('image');
+        $data = $request->except(['image', 'image_url']);
 
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('achievements', 'public');
+        } elseif ($request->filled('image_url')) {
+            $data['image'] = $request->image_url;
         }
 
         Achievement::create($data);
@@ -65,15 +69,21 @@ class AchievementController extends Controller
             'date'        => 'required|string|max:255',
             'student_name'=> 'required|string|max:255',
             'image'       => 'nullable|image|max:2048',
+            'image_url'   => 'nullable|url|max:2048',
         ]);
 
-        $data = $request->except('image');
+        $data = $request->except(['image', 'image_url']);
 
         if ($request->hasFile('image')) {
-            if ($prestasi->image) {
+            if ($prestasi->image && !Str::startsWith($prestasi->image, 'http')) {
                 Storage::disk('public')->delete($prestasi->image);
             }
             $data['image'] = $request->file('image')->store('achievements', 'public');
+        } elseif ($request->filled('image_url')) {
+            if ($prestasi->image && !Str::startsWith($prestasi->image, 'http')) {
+                Storage::disk('public')->delete($prestasi->image);
+            }
+            $data['image'] = $request->image_url;
         }
 
         $prestasi->update($data);
@@ -83,7 +93,7 @@ class AchievementController extends Controller
 
     public function destroy(Achievement $prestasi)
     {
-        if ($prestasi->image) {
+        if ($prestasi->image && !Str::startsWith($prestasi->image, 'http')) {
             Storage::disk('public')->delete($prestasi->image);
         }
         $prestasi->delete();

@@ -7,6 +7,7 @@ use App\Models\Gallery;
 use App\Models\GalleryImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class GalleryController extends Controller
 {
@@ -28,6 +29,7 @@ class GalleryController extends Controller
             'description' => 'nullable|string',
             'images'      => 'nullable|array',
             'images.*'    => 'image|max:2048',
+            'image_urls'  => 'nullable|string',
         ]);
 
         $gallery = Gallery::create([
@@ -44,6 +46,20 @@ class GalleryController extends Controller
                     'image_path' => $path,
                     'caption'    => null,
                 ]);
+            }
+        }
+
+        if ($request->filled('image_urls')) {
+            $urls = preg_split('/\r\n|\r|\n/', $request->image_urls);
+            foreach ($urls as $url) {
+                $url = trim($url);
+                if (filter_var($url, FILTER_VALIDATE_URL)) {
+                    GalleryImage::create([
+                        'gallery_id' => $gallery->id,
+                        'image_path' => $url,
+                        'caption'    => null,
+                    ]);
+                }
             }
         }
 
@@ -68,6 +84,7 @@ class GalleryController extends Controller
             'description' => 'nullable|string',
             'images'      => 'nullable|array',
             'images.*'    => 'image|max:2048',
+            'image_urls'  => 'nullable|string',
         ]);
 
         $galeri->update([
@@ -86,13 +103,29 @@ class GalleryController extends Controller
             }
         }
 
+        if ($request->filled('image_urls')) {
+            $urls = preg_split('/\r\n|\r|\n/', $request->image_urls);
+            foreach ($urls as $url) {
+                $url = trim($url);
+                if (filter_var($url, FILTER_VALIDATE_URL)) {
+                    GalleryImage::create([
+                        'gallery_id' => $galeri->id,
+                        'image_path' => $url,
+                        'caption'    => null,
+                    ]);
+                }
+            }
+        }
+
         return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil diperbarui.');
     }
 
     public function destroy(Gallery $galeri)
     {
         foreach ($galeri->images as $image) {
-            Storage::disk('public')->delete($image->image_path);
+            if ($image->image_path && !Str::startsWith($image->image_path, 'http')) {
+                Storage::disk('public')->delete($image->image_path);
+            }
         }
         $galeri->delete();
 
@@ -101,7 +134,9 @@ class GalleryController extends Controller
 
     public function destroyImage(GalleryImage $image)
     {
-        Storage::disk('public')->delete($image->image_path);
+        if ($image->image_path && !Str::startsWith($image->image_path, 'http')) {
+            Storage::disk('public')->delete($image->image_path);
+        }
         $image->delete();
 
         return back()->with('success', 'Foto berhasil dihapus.');

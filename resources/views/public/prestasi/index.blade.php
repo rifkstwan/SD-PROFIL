@@ -30,7 +30,7 @@
         @else
         {{-- Featured Achievement Card --}}
         <div class="relative w-full h-[320px] sm:h-[450px] md:h-[500px] lg:h-[600px] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500 mb-16 lg:mb-20 group" id="featured-container">
-            <img src="{{ Storage::url($prestasiList[0]->image) }}" id="featured-img"
+            <img src="{{ Str::startsWith($prestasiList[0]->image, 'http') ? $prestasiList[0]->image : Storage::url($prestasiList[0]->image) }}" id="featured-img"
                  alt="Featured Prestasi" 
                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             
@@ -84,13 +84,13 @@
                      'category' => $prestasi->category,
                      'student_name' => $prestasi->student_name,
                      'date' => $prestasi->date,
-                     'image_url' => Storage::url($prestasi->image)
+                     'image_url' => Str::startsWith($prestasi->image, 'http') ? $prestasi->image : Storage::url($prestasi->image)
                  ]) }}"
                  data-index="{{ $index }}"
                  onclick="swapPrestasi(this)">
                 
                 <div class="relative overflow-hidden aspect-[4/3] sm:aspect-square lg:aspect-[4/5]">
-                    <img src="{{ Storage::url($prestasi->image) }}" 
+                    <img src="{{ Str::startsWith($prestasi->image, 'http') ? $prestasi->image : Storage::url($prestasi->image) }}" 
                          alt="{{ $prestasi->title }}" 
                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     

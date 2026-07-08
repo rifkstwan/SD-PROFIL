@@ -33,15 +33,27 @@
             </div>
 
             {{-- Upload Foto --}}
-            <div>
-                <label class="block text-sm font-bold text-gray-900 mb-2">Unggah Foto-foto <span class="text-red-500">*</span></label>
-                <div class="relative">
-                    <input type="file" name="images[]" accept="image/*" multiple
-                        class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#ff6b35]/10 file:text-[#ff6b35] hover:file:bg-[#ff6b35]/20 focus:outline-none transition-all text-gray-600 cursor-pointer
-                        @error('images.*') border-red-500 bg-red-50 @enderror">
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-gray-900 mb-2">Unggah Foto-foto <span class="text-gray-400 font-normal ml-1">(Pilihan upload file)</span></label>
+                    <div class="relative">
+                        <input type="file" name="images[]" accept="image/*" multiple
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#ff6b35]/10 file:text-[#ff6b35] hover:file:bg-[#ff6b35]/20 focus:outline-none transition-all text-gray-600 cursor-pointer
+                            @error('images.*') border-red-500 bg-red-50 @enderror">
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2">Format: JPG, PNG, WEBP. Anda bisa memilih **lebih dari satu** foto sekaligus.</p>
+                    @error('images.*')<p class="text-red-500 text-xs font-medium mt-1.5">{{ $message }}</p>@enderror
                 </div>
-                <p class="text-xs text-gray-500 mt-2">Format: JPG, PNG, WEBP. Anda bisa memilih **lebih dari satu** foto sekaligus.</p>
-                @error('images.*')<p class="text-red-500 text-xs font-medium mt-1.5">{{ $message }}</p>@enderror
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-900 mb-2">Atau Gunakan URL Gambar (Satu URL Per Baris - Rekomendasi untuk Vercel)</label>
+                    <textarea name="image_urls" rows="4" placeholder="https://images.unsplash.com/photo-1
+https://images.unsplash.com/photo-2"
+                        class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#ff6b35]/50 focus:border-[#ff6b35] transition-all
+                               @error('image_urls') border-red-500 bg-red-50 @enderror">{{ old('image_urls') }}</textarea>
+                    <p class="text-xs text-gray-500 mt-2">Gunakan URL gambar dari internet. Masukkan satu URL per baris agar gambar tetap muncul saat di-deploy ke Vercel.</p>
+                    @error('image_urls')<p class="text-red-500 text-xs font-medium mt-1.5">{{ $message }}</p>@enderror
+                </div>
             </div>
         </div>
 

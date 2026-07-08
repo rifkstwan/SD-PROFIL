@@ -39,11 +39,23 @@
                 </div>
 
                 {{-- Tambah Foto --}}
-                <div class="pt-2">
-                    <label class="block text-sm font-bold text-gray-900 mb-2">Tambah Foto Baru <span class="text-gray-400 font-normal ml-1">(Opsional)</span></label>
-                    <div class="relative">
-                        <input type="file" name="images[]" accept="image/*" multiple
-                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#ff6b35]/10 file:text-[#ff6b35] hover:file:bg-[#ff6b35]/20 focus:outline-none transition-all text-gray-600 cursor-pointer">
+                <div class="space-y-4 pt-2">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-2">Tambah Foto Baru (Upload File) <span class="text-gray-400 font-normal ml-1">(Opsional)</span></label>
+                        <div class="relative">
+                            <input type="file" name="images[]" accept="image/*" multiple
+                                class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#ff6b35]/10 file:text-[#ff6b35] hover:file:bg-[#ff6b35]/20 focus:outline-none transition-all text-gray-600 cursor-pointer">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-2">Atau Gunakan URL Gambar (Satu URL Per Baris - Rekomendasi untuk Vercel)</label>
+                        <textarea name="image_urls" rows="4" placeholder="https://images.unsplash.com/photo-1
+https://images.unsplash.com/photo-2"
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#ff6b35]/50 focus:border-[#ff6b35] transition-all
+                                   @error('image_urls') border-red-500 bg-red-50 @enderror">{{ old('image_urls') }}</textarea>
+                        <p class="text-xs text-gray-500 mt-2">Gunakan URL gambar dari internet. Masukkan satu URL per baris agar gambar tetap muncul saat di-deploy ke Vercel.</p>
+                        @error('image_urls')<p class="text-red-500 text-xs font-medium mt-1.5">{{ $message }}</p>@enderror
                     </div>
                 </div>
             </div>
@@ -71,7 +83,7 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
                 @foreach($galeri->images as $image)
                 <div class="relative group rounded-xl overflow-hidden bg-gray-100 border border-gray-100 aspect-square">
-                    <img src="{{ Storage::url($image->image_path) }}"
+                    <img src="{{ Str::startsWith($image->image_path, 'http') ? $image->image_path : Storage::url($image->image_path) }}"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     
                     {{-- Overlay Hapus --}}
