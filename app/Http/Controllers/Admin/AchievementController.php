@@ -38,7 +38,11 @@ class AchievementController extends Controller
         $data = $request->except(['image', 'image_url']);
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('achievements', 'public');
+            try {
+                $data['image'] = $request->file('image')->store('achievements', env('FILESYSTEM_DISK', 'public'));
+            } catch (\Exception $e) {
+                return back()->withInput()->withErrors(['image' => 'Gagal mengunggah file. Serverless Vercel tidak mendukung penyimpanan file lokal. Silakan gunakan opsi URL Gambar di bawah.']);
+            }
         } elseif ($request->filled('image_url')) {
             $data['image'] = $request->image_url;
         }
@@ -76,12 +80,16 @@ class AchievementController extends Controller
 
         if ($request->hasFile('image')) {
             if ($prestasi->image && !Str::startsWith($prestasi->image, 'http')) {
-                Storage::disk('public')->delete($prestasi->image);
+                Storage::disk(env('FILESYSTEM_DISK', 'public'))->delete($prestasi->image);
             }
-            $data['image'] = $request->file('image')->store('achievements', 'public');
+            try {
+                $data['image'] = $request->file('image')->store('achievements', env('FILESYSTEM_DISK', 'public'));
+            } catch (\Exception $e) {
+                return back()->withInput()->withErrors(['image' => 'Gagal mengunggah file. Serverless Vercel tidak mendukung penyimpanan file lokal. Silakan gunakan opsi URL Gambar di bawah.']);
+            }
         } elseif ($request->filled('image_url')) {
             if ($prestasi->image && !Str::startsWith($prestasi->image, 'http')) {
-                Storage::disk('public')->delete($prestasi->image);
+                Storage::disk(env('FILESYSTEM_DISK', 'public'))->delete($prestasi->image);
             }
             $data['image'] = $request->image_url;
         }
@@ -94,7 +102,7 @@ class AchievementController extends Controller
     public function destroy(Achievement $prestasi)
     {
         if ($prestasi->image && !Str::startsWith($prestasi->image, 'http')) {
-            Storage::disk('public')->delete($prestasi->image);
+            Storage::disk(env('FILESYSTEM_DISK', 'public'))->delete($prestasi->image);
         }
         $prestasi->delete();
 

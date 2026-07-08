@@ -39,13 +39,17 @@ class GalleryController extends Controller
         ]);
 
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $path = $image->store('galleries', 'public');
-                GalleryImage::create([
-                    'gallery_id' => $gallery->id,
-                    'image_path' => $path,
-                    'caption'    => null,
-                ]);
+            try {
+                foreach ($request->file('images') as $image) {
+                    $path = $image->store('galleries', env('FILESYSTEM_DISK', 'public'));
+                    GalleryImage::create([
+                        'gallery_id' => $gallery->id,
+                        'image_path' => $path,
+                        'caption'    => null,
+                    ]);
+                }
+            } catch (\Exception $e) {
+                return back()->withInput()->withErrors(['images' => 'Gagal mengunggah file. Serverless Vercel tidak mendukung penyimpanan file lokal. Silakan gunakan opsi URL Gambar di bawah.']);
             }
         }
 
@@ -93,13 +97,17 @@ class GalleryController extends Controller
         ]);
 
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $path = $image->store('galleries', 'public');
-                GalleryImage::create([
-                    'gallery_id' => $galeri->id,
-                    'image_path' => $path,
-                    'caption'    => null,
-                ]);
+            try {
+                foreach ($request->file('images') as $image) {
+                    $path = $image->store('galleries', env('FILESYSTEM_DISK', 'public'));
+                    GalleryImage::create([
+                        'gallery_id' => $galeri->id,
+                        'image_path' => $path,
+                        'caption'    => null,
+                    ]);
+                }
+            } catch (\Exception $e) {
+                return back()->withInput()->withErrors(['images' => 'Gagal mengunggah file. Serverless Vercel tidak mendukung penyimpanan file lokal. Silakan gunakan opsi URL Gambar di bawah.']);
             }
         }
 
@@ -124,7 +132,7 @@ class GalleryController extends Controller
     {
         foreach ($galeri->images as $image) {
             if ($image->image_path && !Str::startsWith($image->image_path, 'http')) {
-                Storage::disk('public')->delete($image->image_path);
+                Storage::disk(env('FILESYSTEM_DISK', 'public'))->delete($image->image_path);
             }
         }
         $galeri->delete();
@@ -135,7 +143,7 @@ class GalleryController extends Controller
     public function destroyImage(GalleryImage $image)
     {
         if ($image->image_path && !Str::startsWith($image->image_path, 'http')) {
-            Storage::disk('public')->delete($image->image_path);
+            Storage::disk(env('FILESYSTEM_DISK', 'public'))->delete($image->image_path);
         }
         $image->delete();
 

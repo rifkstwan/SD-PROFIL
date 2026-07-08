@@ -41,7 +41,11 @@ class NewsController extends Controller
         ];
 
         if ($request->hasFile('thumbnail')) {
-            $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
+            try {
+                $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', env('FILESYSTEM_DISK', 'public'));
+            } catch (\Exception $e) {
+                return back()->withInput()->withErrors(['thumbnail' => 'Gagal mengunggah file. Serverless Vercel tidak mendukung penyimpanan file lokal. Silakan gunakan opsi URL Gambar di bawah.']);
+            }
         } elseif ($request->filled('thumbnail_url')) {
             $data['thumbnail'] = $request->thumbnail_url;
         }
@@ -75,12 +79,16 @@ class NewsController extends Controller
 
         if ($request->hasFile('thumbnail')) {
             if ($beritum->thumbnail && !Str::startsWith($beritum->thumbnail, 'http')) {
-                Storage::disk('public')->delete($beritum->thumbnail);
+                Storage::disk(env('FILESYSTEM_DISK', 'public'))->delete($beritum->thumbnail);
             }
-            $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
+            try {
+                $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', env('FILESYSTEM_DISK', 'public'));
+            } catch (\Exception $e) {
+                return back()->withInput()->withErrors(['thumbnail' => 'Gagal mengunggah file. Serverless Vercel tidak mendukung penyimpanan file lokal. Silakan gunakan opsi URL Gambar di bawah.']);
+            }
         } elseif ($request->filled('thumbnail_url')) {
             if ($beritum->thumbnail && !Str::startsWith($beritum->thumbnail, 'http')) {
-                Storage::disk('public')->delete($beritum->thumbnail);
+                Storage::disk(env('FILESYSTEM_DISK', 'public'))->delete($beritum->thumbnail);
             }
             $data['thumbnail'] = $request->thumbnail_url;
         }
@@ -93,7 +101,7 @@ class NewsController extends Controller
     public function destroy(News $beritum)
     {
         if ($beritum->thumbnail && !Str::startsWith($beritum->thumbnail, 'http')) {
-            Storage::disk('public')->delete($beritum->thumbnail);
+            Storage::disk(env('FILESYSTEM_DISK', 'public'))->delete($beritum->thumbnail);
         }
         $beritum->delete();
 
